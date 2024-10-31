@@ -3,8 +3,8 @@ const express = require("express");
 const path = require("path");
 const TelegramBot = require("node-telegram-bot-api");
 
-const gameName = "YOUR_GAME_NAME_GOES_HERE";
-const webURL = "www.YOUR_URL.com";
+const gameName = "GachonGame";
+const webURL = "gachon-junho.github.io/simple-telegram-game-backend/public";
 
 const server = express();
 const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
@@ -31,7 +31,7 @@ function addAllNumbers(number) {
 bot.onText(/\/help/, (msg) =>
   bot.sendMessage(
     msg.from.id,
-    "This bot implements a simple game. Say /game if you want to play."
+    "이 봇은 간단한 게임을 구현합니다. 게임을 플레이 하려면 /game을 전송하세요."
   )
 );
 bot.onText(/\/start|\/game/, (msg) => bot.sendGame(msg.from.id, gameName));
