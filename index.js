@@ -77,3 +77,17 @@ function addAllNumbers(number) {
 server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+
+// 지워야할 수도 있는 부분
+// 로그 처리 엔드포인트
+server.post("/log", express.json(), (req, res) => {
+  const { message } = req.body;
+
+  if (message) {
+    console.log(`[Log from Unity]: ${message}`);
+    res.status(200).send({ status: "success", message: "Log received" });
+  } else {
+    res.status(400).send({ status: "error", message: "No log message provided" });
+  }
+});
